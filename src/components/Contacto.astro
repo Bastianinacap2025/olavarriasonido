@@ -1,0 +1,78 @@
+<section id="contacto" class="bg-[#141414] text-white py-12 px-4">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Contáctanos</h2>
+      <form action="/enviar-formulario.php" method="POST" class="space-y-6">        <!-- Nombre -->
+        <div>
+          <label for="nombre" class="block mb-2">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            required
+            class="w-full px-4 py-2 bg-[#1f1f1f] border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          />
+        </div>
+  
+        <!-- Correo -->
+        <div>
+          <label for="email" class="block mb-2">Correo electrónico</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-4 py-2 bg-[#1f1f1f] border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          />
+        </div>
+  
+        <!-- Teléfono -->
+        <div>
+          <label for="telefono" class="block mb-2">Teléfono</label>
+          <input
+            type="tel"
+            id="telefono"
+            name="telefono"
+            class="w-full px-4 py-2 bg-[#1f1f1f] border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          />
+        </div>
+  
+        <!-- Mensaje -->
+        <div>
+          <label for="mensaje" class="block mb-2">Mensaje</label>
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            rows="5"
+            required
+            class="w-full px-4 py-2 bg-[#1f1f1f] border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          ></textarea>
+        </div>
+        
+        <!-- Botón -->
+        <div class="g-recaptcha" data-sitekey="6LfS2BcrAAAAAGerVQ5ip5Rpys-EE0BFquzA3qGX"></div>
+        <div class="text-center">
+            
+          <button
+            type="submit"
+            class="bg-[#E7000B] hover:bg-[#581C1E] cursor-pointer text-white font-semibold px-6 py-2 rounded-lg transition duration-300"
+          >
+            Enviar mensaje
+          </button>
+        </div>
+      </form>
+      <script>
+        document.querySelector("form").addEventListener("submit", function (e) {
+          const nombre = document.getElementById("nombre").value.trim();
+          const email = document.getElementById("email").value.trim();
+          const mensaje = document.getElementById("mensaje").value.trim();
+      
+          if (!nombre || !email || !mensaje) {
+            e.preventDefault();
+            alert("Por favor, completa todos los campos obligatorios.");
+          }
+        });
+      </script>
+    </div>
+  </section>
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>

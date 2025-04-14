@@ -1,0 +1,51 @@
+---
+const eventos = [
+  {
+    titulo: "Festival de Viña del Mar",
+    descripcion: "Provisión de sonido profesional para artistas nacionales e internacionales en el festival más importante de Chile.",
+    imagen: "./images/eventos/vina.jpg"
+  },
+  {
+    titulo: "Concierto de Roger Waters",
+    descripcion: "Implementación de sistema de sonido envolvente con torres distribuidas en el Estadio Nacional, año 2012.",
+    imagen: "./images/eventos/roger.jpg"
+  },
+  {
+    titulo: "Festival del Huaso de Olmué",
+    descripcion: "Refuerzo sonoro integral en evento televisado con música tradicional chilena y artistas populares.",
+    imagen: "./images/eventos/olmue.webp"
+  },
+  {
+  titulo: "Creamfields Chile",
+  descripcion: "Producción de sonido e iluminación en uno de los festivales de música electrónica más grandes de Latinoamérica.",
+  imagen: "./images/eventos/creamfield.jpg"
+},
+  {
+    titulo: "Concierto de Paul McCartney",
+    descripcion: "Producción de sonido en vivo para uno de los conciertos más icónicos del ex Beatle en Chile.",
+    imagen: "./images/eventos/paul.webp"
+  },
+  {
+    titulo: "Lollapalooza Chile",
+    descripcion: "Sonido para escenarios principales con artistas como The Killers, Armin Van Buuren y The Weeknd.",
+    imagen: "./images/eventos/lollapaloza.jpg"
+  }
+];
+---
+
+<section id="Eventos" class="bg-[#141414] text-white py-20">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Eventos Recientes</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {eventos.map(evento => (
+        <div class="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+          <img src={evento.imagen} alt={evento.titulo} class="w-full h-50 object-cover" />
+          <div class="p-5">
+            <h3 class="text-xl font-semibold mb-1">{evento.titulo}</h3>
+            <p class="text-sm text-gray-300">{evento.descripcion}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

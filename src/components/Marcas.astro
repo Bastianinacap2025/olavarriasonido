@@ -1,0 +1,41 @@
+---
+const marcas = [
+  {
+    nombre: "L-Acoustics",
+    imagen: "/images/marcas/lacoustics.png"
+  },
+  {
+    nombre: "DiGiCo",
+    imagen: "/images/marcas/digico.png"
+  },
+  {
+    nombre: "Avid",
+    imagen: "/images/marcas/avid.png"
+  },
+  {
+    nombre: "d&b audiotechnik",
+    imagen: "/images/marcas/db.png"
+  },
+  {
+    nombre: "Bose",
+    imagen: "/images/marcas/bose.png"
+  },
+  {
+    nombre: "Shure",
+    imagen: "/images/marcas/shure.png"
+  }
+];
+---
+
+<section id="marcas" class="bg-[#141414] py-16 px-4 text-white">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-10">Trabajamos con las mejores marcas</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-center">
+      {marcas.map((marca) => (
+        <div class="flex justify-center items-center">
+          <img src={marca.imagen} alt={marca.nombre} class="max-h-16 object-contain" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

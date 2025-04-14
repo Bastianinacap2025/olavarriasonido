@@ -27,9 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $headers = "From: $email";
 
     if (mail($destinatario, $asunto, $contenido, $headers)) {
-        header("Location: /index.astro");
-exit;
-;
+        echo "Mensaje enviado correctamente.";
     } else {
         echo "Error al enviar el mensaje.";
     }

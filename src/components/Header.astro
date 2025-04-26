@@ -1,12 +1,71 @@
-<header class="bg-[#141414] text-white py-4 px-6 flex justify-between items-center">
-    <div class="logo">
-        <a href="#">
-      <img src="./public/images/logo-olavarriasonido.png" alt="Olavarría Sonido" class="h-12" /></a>
-    </div>
-    <nav class="flex gap-6">
-      <a href="#inicio" class="neon-border">Inicio</a>
-      <a href="#Servicios" class="neon-border">Servicios</a>
-      <a href="#Eventos" class="neon-border">Eventos</a>
-      <a href="#contacto" class="neon-border">Contacto</a>
-    </nav>
-  </header>
+<header class="bg-[#141414] text-white py-4 px-6 flex justify-between items-center relative">
+  <div class="logo">
+    <a href="#">
+      <img src="./public/images/logo-olavarriasonido.png" alt="Olavarría Sonido" class="h-12" />
+    </a>
+  </div>
+  
+  <!-- Botón de menú hamburguesa mejorado -->
+  <button id="menu-toggle" aria-label="Menú" aria-expanded="false" 
+          class="md:hidden focus:outline-none z-50">
+    <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+    <svg id="close-icon" class="w-8 h-8 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+  
+  <!-- Menú de navegación mejorado -->
+  <nav id="main-nav" aria-labelledby="menu-toggle"
+       class="hidden md:flex flex-col md:flex-row absolute md:static top-full md:items-start items-center  right-0 md:right-auto mt-2 md:mt-0 bg-[#141414] md:bg-transparent p-4 md:p-0 gap-4 md:gap-6 rounded-lg md:rounded-none w-full md:w-auto left-0 md:left-auto text-center md:text-left z-40 shadow-lg md:shadow-none">
+    <a href="#inicio" class="neon-border px-4 py-2 md:py-0">Inicio</a>
+    <a href="#Servicios" class="neon-border px-4 py-2 md:py-0">Servicios</a>
+    <a href="#Eventos" class="neon-border px-4 py-2 md:py-0">Eventos</a>
+    <a href="#contacto" class="neon-border px-4 py-2 md:py-0">Contacto</a>
+  </nav>
+</header>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.getElementById('menu-toggle');
+  const mainNav = document.getElementById('main-nav');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener('click', () => {
+      // Alternar visibilidad del menú
+      mainNav.classList.toggle('hidden');
+      
+      // Alternar iconos
+      if (menuIcon) {
+        menuIcon.classList.toggle('hidden');
+      }
+      if (closeIcon) {
+        closeIcon.classList.toggle('hidden');
+      }
+      
+      // Actualizar atributo ARIA
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isExpanded));
+    });
+    
+    // Cerrar menú al hacer clic en un enlace (opcional)
+    document.querySelectorAll('#main-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 768) {
+          mainNav.classList.add('hidden');
+          if (menuIcon) {
+            menuIcon.classList.remove('hidden');
+          }
+          if (closeIcon) {
+            closeIcon.classList.add('hidden');
+          }
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  }
+});
+</script>

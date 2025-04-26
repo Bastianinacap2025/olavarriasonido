@@ -16,8 +16,8 @@ export const POST: APIRoute = async ({ request }) => {
     const transporter = nodemailer.createTransport({
       service: "Gmail",
       auth: {
-        user: import.meta.env.MAIL_USER, // Accede a la variable de entorno MAIL_USER
-        pass: import.meta.env.MAIL_PASS,  // Accede a la variable de entorno MAIL_PASS
+        user: import.meta.env.MAIL_USER,
+        pass: import.meta.env.MAIL_PASS,
       },
     });
 

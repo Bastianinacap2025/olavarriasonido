@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
 import tailwindcss from '@tailwindcss/vite'
-import vercel from '@astrojs/vercel'
+import vercel from '@astrojs/vercel/serverless'
 import sitemap from '@astrojs/sitemap'
 
 export default defineConfig({
@@ -18,7 +18,7 @@ export default defineConfig({
     svg: true,
   },
 
-  adapter: vercel(),
+  adapter: vercel({}),
 
   integrations: [sitemap()],
 

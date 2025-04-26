@@ -1,4 +1,3 @@
-// src/pages/api/contacto.ts
 import type { APIRoute } from "astro";
 import nodemailer from "nodemailer";
 
@@ -17,14 +16,14 @@ export const POST: APIRoute = async ({ request }) => {
     const transporter = nodemailer.createTransport({
       service: "Gmail",
       auth: {
-        user: "import.meta.env.MAIL_USER",        // <-- reemplaza con tu correo
-        pass: "import.meta.env.MAIL_PASS",         // <-- usa una App Password si es Gmail
+        user: import.meta.env.MAIL_USER, // Accede a la variable de entorno MAIL_USER
+        pass: import.meta.env.MAIL_PASS,  // Accede a la variable de entorno MAIL_PASS
       },
     });
 
     await transporter.sendMail({
-      from: `"Olavarría Sonido" <TUCORREO@gmail.com>`,
-      to: "TUCORREO@gmail.com",
+      from: `"Olavarría Sonido" <${import.meta.env.MAIL_USER}>`, // Usa la variable para el correo
+      to: "bastiancampos2109@gmail.com", // Correo al que se enviará el mensaje
       subject: "Nuevo mensaje de contacto",
       text: `
     Nombre: ${nombre}
